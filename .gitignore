@@ -2,5 +2,4 @@ __pycache__/
 *.pyc
 .env
 venv/
-models/*.pkl
 .ipynb_checkpoints/
