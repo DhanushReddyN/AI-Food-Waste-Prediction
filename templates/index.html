@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Food Waste Predictor</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div class="container">
+
+            <h1>
+                <i class="fa-solid fa-chart-line"></i>
+                AI-Powered Food Waste Prediction
+            </h1>
+
+            <form action="/predict" method="POST">
+
+                <!-- Type of Food -->
+                <label>Type of Food</label>
+                <select name="food_type" required>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Meat">Meat</option>
+                    <option value="Bakery">Bakery</option>
+                </select>
+
+                <!-- Guests -->
+                <label>Number of Guests</label>
+                <input type="number" name="guests" required>
+
+                <!-- Event Type -->
+                <label>Event Type</label>
+                <select name="event_type" required>
+                    <option value="Wedding">Wedding</option>
+                    <option value="Party">Party</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Festival">Festival</option>
+                </select>
+
+                <!-- Quantity -->
+                <label>Quantity of Food</label>
+                <input type="number" name="quantity" required>
+
+                <!-- Storage -->
+                <label>Storage Conditions</label>
+                <select name="storage" required>
+                    <option value="Refrigerated">Refrigerated</option>
+                    <option value="Room Temperature">Room Temperature</option>
+                    <option value="Frozen">Frozen</option>
+                </select>
+
+                <!-- Purchase History -->
+                <label>Purchase History</label>
+                <input type="number" name="purchase_history" required>
+
+                <!-- Season -->
+                <label>Seasonality</label>
+                <select name="season" required>
+                    <option value="Summer">Summer</option>
+                    <option value="Winter">Winter</option>
+                    <option value="Rainy">Rainy</option>
+                </select>
+
+                <!-- Preparation -->
+                <label>Preparation Method</label>
+                <select name="prep_method" required>
+                    <option value="Buffet">Buffet</option>
+                    <option value="Packed">Packed</option>
+                    <option value="Served">Served</option>
+                </select>
+
+                <!-- Location -->
+                <label>Location</label>
+                <select name="location" required>
+                    <option value="Urban">Urban</option>
+                    <option value="Rural">Rural</option>
+                </select>
+
+                <!-- Pricing -->
+                <label>Pricing</label>
+                <select name="pricing" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <!-- Loader -->
+                <div id="loader" class="loader" style="display:none;"></div>
+
+                <!-- Button -->
+                <button type="submit" onclick="showLoader()">
+                    <i class="fa-solid fa-brain"></i>
+                    Predict Waste
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            Developed by Dhanush Reddy
+        </footer>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>

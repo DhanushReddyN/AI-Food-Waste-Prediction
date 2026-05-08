@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="result-container">
+
+    <h1>Prediction Result</h1>
+
+    <h2>{{ prediction }}</h2>
+
+    <h3>{{ risk }}</h3>
+
+    <p>{{ recommendation }}</p>
+
+    <!-- AI Insight -->
+    <div class="ai-box">
+        <h3>AI Insight</h3>
+        <p>{{ insight }}</p>
+    </div>
+
+    <!-- CHART PLACE -->
+   <div class="chart-container">
+    <canvas id="wasteChart"></canvas>
+</div>
+
+    <a href="/">
+        <button>Predict Again</button>
+    </a>
+
+</div>
+
+<!-- CHART SCRIPT PLACE -->
+<script>
+
+let waste = Number("{{ prediction }}");
+let safe = 100 - waste;
+
+const ctx = document.getElementById('wasteChart');
+
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Predicted Waste', 'Safe Food'],
+        datasets: [{
+            data: [waste, safe]
+        }]
+    }
+});
+
+</script>
+<div class="history-box">
+
+    <h3>Prediction History</h3>
+
+    <table>
+
+        <tr>
+            <th>#</th>
+            <th>Prediction</th>
+        </tr>
+
+        {% for item in history %}
+
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ item }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
