@@ -9,7 +9,7 @@ app = Flask(
 )
 
 # Load trained model
-model = joblib.load("../models/food_waste_model.pkl")
+model = joblib.load("models/food_waste_model.pkl")
 
 
 # Home Page
